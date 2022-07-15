@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "test": "test",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
   "repository": {
     "type": "git",
