@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Laecio12/desafio-XP/issues"
   },
-  "homepage": "https://github.com/Laecio12/desafio-XP#readme"
+  "homepage": "https://github.com/Laecio12/desafio-XP#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
