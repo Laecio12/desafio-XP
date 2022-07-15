@@ -1,0 +1,19 @@
+{
+  "name": "desafio-xp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Laecio12/desafio-XP.git"
+  },
+  "author": "Laecio Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Laecio12/desafio-XP/issues"
+  },
+  "homepage": "https://github.com/Laecio12/desafio-XP#readme"
+}
