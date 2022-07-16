@@ -10,4 +10,13 @@ const create = async (id, name, cpf, password) => {
   }
 };
 
-export default { create };
+const findByCpf = async (cpf) => {
+  try {
+    const [user] = await connection.execute('SELECT * FROM users WHERE cpf = ?', [cpf]);
+    return user;
+  } catch (error) {
+    throw new AppError(error.message, 500);
+  }
+};
+
+export default { create, findByCpf };
