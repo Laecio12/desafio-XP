@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/Laecio12/desafio-XP#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3"
   },
   "devDependencies": {
     "eslint": "^7.32.0 || ^8.2.0",
