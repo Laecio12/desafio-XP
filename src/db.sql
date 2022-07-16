@@ -11,6 +11,8 @@ CREATE TABLE
   users (
     id VARCHAR(36) NOT NULL,
     name VARCHAR(70) NOT NULL,
+    cpf VARCHAR(11) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
     admin BOOLEAN DEFAULT FALSE,
     created_at DATETIME DEFAULT NOW(),
     updated_at DATETIME DEFAULT NOW() ON UPDATE NOW(),
