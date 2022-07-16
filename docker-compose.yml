@@ -19,6 +19,7 @@ services:
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
+      MYSQL_DATABASE: desafio_xp
       HOSTNAME: db
   db:
     container_name: desafio_xp_db
