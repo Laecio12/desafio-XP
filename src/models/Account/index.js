@@ -9,6 +9,14 @@ const deposit = async (accountNumber, value) => {
   }
 };
 
+const withdraw = async (accountNumber, value) => {
+  try {
+    await connection.execute('UPDATE accounts SET balance = balance - ? WHERE account_number = ?', [value, accountNumber]);
+  } catch (error) {
+    throw new AppError(error.message, 500);
+  }
+};
+
 const getBalance = async (accountNumber) => {
   try {
     const [balance] = await connection.execute('SELECT balance FROM accounts WHERE account_number = ?', [accountNumber]);
@@ -18,4 +26,4 @@ const getBalance = async (accountNumber) => {
   }
 };
 
-export default { deposit, getBalance };
+export default { deposit, getBalance, withdraw };
