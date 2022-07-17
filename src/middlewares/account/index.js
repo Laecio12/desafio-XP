@@ -1,6 +1,6 @@
 import AppError from '../../errors/AppError.js';
 
-const validateDeposit = (req, res, next) => {
+const validateValue = (req, res, next) => {
   const { value } = req.body;
   if (!value) throw new AppError('Valor é obrigatório');
   if (typeof value === 'string') throw new AppError('Valor informado deve ser um número', 422);
@@ -8,4 +8,4 @@ const validateDeposit = (req, res, next) => {
   next();
 };
 
-export default validateDeposit;
+export default validateValue;
