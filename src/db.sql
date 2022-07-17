@@ -53,3 +53,15 @@ CREATE TABLE
     FOREIGN KEY (investiment_symbol) REFERENCES investments (symbol) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY(id)
   ) ENGINE = INNODB;
+
+  INSERT INTO investments (symbol, price, quatity) VALUES 
+  ('XPBR31', 94.31, 200), 
+  ('PETR4', 27.96, 100), 
+  ('TAEE11', 39.60, 150), 
+  ('MGLU3', 2.78, 250), 
+  ('FLRY3', 16.35, 250), 
+  ('XPLG11', 96.00, 250), 
+  ('HGLG11', 163.54, 150), 
+  ('KNRI11', 132.40, 150), 
+  ('MXRF11', 9.68, 150), 
+  ('ALZR11', 113.50, 150);
