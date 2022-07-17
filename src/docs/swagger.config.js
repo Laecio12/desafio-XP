@@ -122,8 +122,14 @@ const swaggerConfig = {
             200: {
               description: 'Success',
             },
+            400: {
+              description: 'Bad Request',
+            },
             401: {
               description: 'Unauthorized',
+            },
+            422: {
+              description: 'Unprocessable Entity',
             },
             500: {
               description: 'Internal Server Error',
@@ -167,6 +173,9 @@ const swaggerConfig = {
             },
             401: {
               description: 'Unauthorized',
+            },
+            422: {
+              description: 'Unprocessable Entity',
             },
             500: {
               description: 'Internal Server Error',
