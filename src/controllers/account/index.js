@@ -8,4 +8,12 @@ const deposit = (request, response) => {
   response.status(200).json({ message: 'Deposito realizado com sucesso' });
 };
 
-export default { deposit };
+const withdraw = async (request, response) => {
+  const { account } = request.user;
+  const { value } = request.body;
+  await accountService.withdraw(account, value);
+
+  response.status(200).json({ message: 'Saque realizado com sucesso' });
+};
+
+export default { deposit, withdraw };
