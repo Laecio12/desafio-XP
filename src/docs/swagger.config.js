@@ -184,6 +184,56 @@ const swaggerConfig = {
         },
 
       },
+      '/investimentos/comprar': {
+        post: {
+          tags: ['Investimentos'],
+          summary: 'Comprar um ativo',
+          description: 'Para comprar um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          security: [
+            { bearerAuth: [] },
+          ],
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    symbol: {
+                      type: 'string',
+                    },
+                    quantity: {
+                      type: 'number',
+                    },
+                  },
+                  example: {
+                    symbol: 'XPBR31',
+                    quantity: 100,
+                  },
+                },
+              },
+            },
+          },
+
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            400: {
+              description: 'Bad Request',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            422: {
+              description: 'Unprocessable Entity',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
     },
   },
   apis: ['./src/routes/index.js'],
