@@ -6,6 +6,15 @@ const swaggerConfig = {
       version: '1.0.0',
       description: 'API documentation',
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
     servers: [
       {
         url: 'http://localhost:3333',
@@ -18,9 +27,6 @@ const swaggerConfig = {
           tags: ['Users'],
           summary: 'Criar um usuário',
           description: 'Cria um novo usuário',
-          security: [
-            { bearerAuth: [] },
-          ],
           requestBody: {
             content: {
               'application/json': {
@@ -55,6 +61,121 @@ const swaggerConfig = {
             },
             409: {
               description: 'Conflict',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
+      '/conta/saldo': {
+        get: {
+          tags: ['Conta'],
+          summary: 'Pegar saldo da conta',
+          description: 'Para pegar o saldo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          security: [
+            { bearerAuth: [] },
+          ],
+
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
+      '/conta/deposito': {
+        post: {
+          tags: ['Conta'],
+          summary: 'Fazer um depósito na conta',
+          description: 'Para fazer o depósito clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          security: [
+            { bearerAuth: [] },
+          ],
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    value: {
+                      type: 'number',
+                    },
+                  },
+                  example: {
+                    value: 100,
+                  },
+                },
+              },
+            },
+          },
+
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            400: {
+              description: 'Bad Request',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            422: {
+              description: 'Unprocessable Entity',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
+      '/conta/saque': {
+        post: {
+          tags: ['Conta'],
+          summary: 'Fazer um saque',
+          description: 'Para fazer o saque clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          security: [
+            { bearerAuth: [] },
+          ],
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    value: {
+                      type: 'number',
+                    },
+                  },
+                  example: {
+                    value: 100,
+                  },
+                },
+              },
+            },
+          },
+
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            400: {
+              description: 'Bad Request',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            422: {
+              description: 'Unprocessable Entity',
             },
             500: {
               description: 'Internal Server Error',

@@ -28,4 +28,13 @@ const findByCpf = async (cpf) => {
   }
 };
 
-export default { create, findByCpf };
+const findById = async (id) => {
+  try {
+    const [user] = await connection.execute('SELECT U.*, A.account_number as account FROM users as U JOIN accounts as A ON A.user_id=U.id WHERE id = ?', [id]);
+    return user;
+  } catch (error) {
+    throw new AppError(error.message, 500);
+  }
+};
+
+export default { create, findByCpf, findById };
