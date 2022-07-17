@@ -9,4 +9,13 @@ const deposit = async (accountNumber, value) => {
   }
 };
 
-export default { deposit };
+const getBalance = async (accountNumber) => {
+  try {
+    const [balance] = await connection.execute('SELECT balance FROM accounts WHERE account_number = ?', [accountNumber]);
+    return balance;
+  } catch (error) {
+    throw new AppError(error.message, 500);
+  }
+};
+
+export default { deposit, getBalance };
