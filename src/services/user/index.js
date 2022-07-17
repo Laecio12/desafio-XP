@@ -20,4 +20,10 @@ const create = async (name, cpf, password) => {
   };
 };
 
-export default { create };
+const getUserById = async (id) => {
+  const [user] = await UserModel.findById(id);
+  if (!user) throw new AppError('Usuário não existe', 404);
+  return user;
+};
+
+export default { create, getUserById };
