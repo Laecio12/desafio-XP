@@ -11,6 +11,8 @@ CREATE TABLE
   users (
     id VARCHAR(36) NOT NULL,
     name VARCHAR(70) NOT NULL,
+    cpf VARCHAR(11) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
     admin BOOLEAN DEFAULT FALSE,
     created_at DATETIME DEFAULT NOW(),
     updated_at DATETIME DEFAULT NOW() ON UPDATE NOW(),
@@ -28,7 +30,7 @@ CREATE TABLE
   ) ENGINE = INNODB;
 
 CREATE TABLE
-  account (
+  accounts (
     account_number VARCHAR(8) NOT NULL UNIQUE,
     balance DECIMAL(10, 2) NOT NULL,
     user_id VARCHAR(36) NOT NULL,
@@ -39,7 +41,7 @@ CREATE TABLE
   ) ENGINE = INNODB;
 
 CREATE TABLE
-  wallet (
+  wallets (
     id VARCHAR(36) NOT NULL,
     investiment_symbol VARCHAR(7) NOT NULL UNIQUE,
     quantity INT NOT NULL,
