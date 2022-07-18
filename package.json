@@ -5,9 +5,9 @@
   "type": "module",
   "main": "server.js",
   "scripts": {
-    "test": "test",
+    "test:mocha": "nyc --all mocha src/**/*.test.js --exit",
     "dev": "nodemon src/server.js",
-    "lint": "eslint --ext .js --ignore-path .gitignore ."
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,"
   },
   "repository": {
     "type": "git",
@@ -20,12 +20,23 @@
   },
   "homepage": "https://github.com/Laecio12/desafio-XP#readme",
   "dependencies": {
-    "express": "^4.18.1"
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.5.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "chai": "^4.3.6",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
-    "nodemon": "^2.0.19"
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.19",
+    "nyc": "^15.1.0",
+    "sinon": "^14.0.0"
   }
 }
