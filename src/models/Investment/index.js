@@ -74,6 +74,22 @@ const getInvestmentBySymbolByUser = async (userId, symbol) => {
     throw new AppError(error.message, 500);
   }
 };
+
+const getAll = async () => {
+  try {
+    const [investments] = await connection.execute('SELECT * FROM investments');
+    return investments;
+  } catch (error) {
+    throw new AppError(error.message, 500);
+  }
+};
+
 export default {
-  purchase, getBySymbol, InvestmentAdd, getInvestmentBySymbolByUser, sell, deleteTransaction,
+  purchase,
+  getBySymbol,
+  InvestmentAdd,
+  getInvestmentBySymbolByUser,
+  sell,
+  deleteTransaction,
+  getAll,
 };
