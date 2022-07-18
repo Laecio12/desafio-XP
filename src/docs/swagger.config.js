@@ -69,6 +69,29 @@ const swaggerConfig = {
         },
 
       },
+
+      '/users/ativos': {
+        get: {
+          tags: ['Users'],
+          summary: 'Ativos da pessoa usuária',
+          description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          security: [
+            { bearerAuth: [] },
+          ],
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
       '/conta/saldo': {
         get: {
           tags: ['Conta'],
@@ -285,6 +308,7 @@ const swaggerConfig = {
         },
 
       },
+
     },
   },
   apis: ['./src/routes/index.js'],
