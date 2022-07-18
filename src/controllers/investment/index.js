@@ -16,4 +16,9 @@ const sell = async (request, response) => {
   response.status(200).json({ message: 'Venda realizada com sucesso' });
 };
 
-export default { purchase, sell };
+const getall = async (request, response) => {
+  const investments = await investmentService.getAll();
+  response.status(200).json(investments);
+};
+
+export default { purchase, sell, getall };
