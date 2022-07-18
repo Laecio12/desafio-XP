@@ -17,10 +17,11 @@ services:
     ports:
       - 3333:3333
     environment:
-      MYSQL_HOST: db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: desafio_xp
+      MYSQL_HOST: us-cdbr-east-06.cleardb.net
+      MYSQL_USER: b0747f0db43837
+      MYSQL_PASSWORD: 369b038a,
+      JWT_SECRET: f39da548ea27c6bd2992a8e618c35b90
+      MYSQL_DATABASE: heroku_770f16010c89f53
       HOSTNAME: db
   db:
     container_name: desafio_xp_db
