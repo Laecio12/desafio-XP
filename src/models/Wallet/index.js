@@ -17,4 +17,18 @@ const getInvestmentsByUser = async (userId) => {
   }
 };
 
-export default { getInvestmentsByUser };
+const getInvestmentBySymbolByUser = async (userId, symbol) => {
+  try {
+    const [investment] = await connection.execute(`SELECT T.user_id as CodCliente,
+    T.investment_symbol as CodAtivo,
+    T.quantity as QtdeAtivo,
+    T.average_price as PrecoMedio
+   FROM transactions AS T WHERE user_id = ? AND investment_symbol = ?`, [userId, symbol]);
+
+    return investment;
+  } catch (error) {
+    throw new AppError(error.message, 500);
+  }
+};
+
+export default { getInvestmentsByUser, getInvestmentBySymbolByUser };
