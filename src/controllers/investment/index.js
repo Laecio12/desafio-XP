@@ -8,4 +8,12 @@ const purchase = async (request, response) => {
   response.status(200).json({ message: 'Compra realizada com sucesso' });
 };
 
-export default { purchase };
+const sell = async (request, response) => {
+  const { account, id } = request.user;
+  const { symbol, quantity } = request.body;
+  await investmentService.sell(account, id, symbol, quantity);
+
+  response.status(200).json({ message: 'Venda realizada com sucesso' });
+};
+
+export default { purchase, sell };
