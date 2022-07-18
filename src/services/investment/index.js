@@ -45,4 +45,9 @@ const sell = async (accountNumber, userId, symbol, quantity) => {
   }
 };
 
-export default { purchase, sell };
+const getAll = async () => {
+  const investments = await investmentModel.getAll();
+  return investments;
+};
+
+export default { purchase, sell, getAll };
