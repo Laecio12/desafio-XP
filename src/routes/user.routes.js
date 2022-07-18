@@ -8,5 +8,6 @@ const userRouter = express.Router();
 
 userRouter.post('/', validate, userController.create);
 userRouter.get('/ativos', ensureAuthenticated, walletController.getInvestmentsByUser);
+userRouter.get('/ativos/:CodAtivo', ensureAuthenticated, walletController.getInvestmentBySymbolByUser);
 
 export default userRouter;
