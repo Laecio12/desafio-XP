@@ -17,6 +17,10 @@ const swaggerConfig = {
     },
     servers: [
       {
+        url: 'https://desafio-xp.herokuapp.com',
+        description: 'Heroku server',
+      },
+      {
         url: 'http://localhost:3333',
         description: 'Local server',
       },
