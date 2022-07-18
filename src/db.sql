@@ -23,7 +23,7 @@ CREATE TABLE
   investments (
     symbol VARCHAR(7) NOT NULL UNIQUE,
     price DECIMAL(10, 2) NOT NULL,
-    quatity INT NOT NULL,
+    quantity INT NOT NULL,
     created_at DATETIME DEFAULT NOW(),
     updated_at DATETIME DEFAULT NOW() ON UPDATE NOW(),
     PRIMARY KEY(symbol)
@@ -41,20 +41,20 @@ CREATE TABLE
   ) ENGINE = INNODB;
 
 CREATE TABLE
-  wallets (
-    id VARCHAR(36) NOT NULL,
-    investiment_symbol VARCHAR(7) NOT NULL UNIQUE,
+  transactions (
+	id VARCHAR(36) NOT NULL,
+	user_id VARCHAR(36) NOT NULL,
+    investment_symbol VARCHAR(7) NOT NULL,
     quantity INT NOT NULL,
     average_price DECIMAL(10, 2) NOT NULL,
-    user_id VARCHAR(36) NOT NULL,
     created_at DATETIME DEFAULT NOW(),
     updated_at DATETIME DEFAULT NOW() ON UPDATE NOW(),
     FOREIGN KEY (user_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (investiment_symbol) REFERENCES investments (symbol) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (investment_symbol) REFERENCES investments (symbol) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY(id)
   ) ENGINE = INNODB;
 
-  INSERT INTO investments (symbol, price, quatity) VALUES 
+  INSERT INTO investments (symbol, price, quantity) VALUES 
   ('XPBR31', 94.31, 200), 
   ('PETR4', 27.96, 100), 
   ('TAEE11', 39.60, 150), 

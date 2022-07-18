@@ -69,6 +69,62 @@ const swaggerConfig = {
         },
 
       },
+
+      '/users/ativos': {
+        get: {
+          tags: ['Users'],
+          summary: 'Buscar todos os ativos da pessoa usuária',
+          description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          security: [
+            { bearerAuth: [] },
+          ],
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
+      '/users/ativos/{CodAtivo}': {
+        get: {
+          tags: ['Users'],
+          summary: 'Buscar um ativo específico',
+          description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          security: [
+            { bearerAuth: [] },
+          ],
+          parameters: [
+            {
+              name: 'CodAtivo',
+              in: 'path',
+              description: 'Código do ativo',
+              required: true,
+              schema: {
+                type: 'string',
+              },
+            },
+          ],
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
       '/conta/saldo': {
         get: {
           tags: ['Conta'],
@@ -184,6 +240,125 @@ const swaggerConfig = {
         },
 
       },
+      '/investimentos/listar': {
+        get: {
+          tags: ['Investimentos'],
+          summary: 'Listar os ativos disponíveis na corretora',
+          description: 'Ativos disponíveis na corretora',
+
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
+
+      '/investimentos/comprar': {
+        post: {
+          tags: ['Investimentos'],
+          summary: 'Comprar um ativo',
+          description: 'Para comprar um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          security: [
+            { bearerAuth: [] },
+          ],
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    symbol: {
+                      type: 'string',
+                    },
+                    quantity: {
+                      type: 'number',
+                    },
+                  },
+                  example: {
+                    symbol: 'XPBR31',
+                    quantity: 100,
+                  },
+                },
+              },
+            },
+          },
+
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            400: {
+              description: 'Bad Request',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            422: {
+              description: 'Unprocessable Entity',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
+      '/investimentos/vender': {
+        post: {
+          tags: ['Investimentos'],
+          summary: 'Vender um ativo',
+          description: 'Para vender um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          security: [
+            { bearerAuth: [] },
+          ],
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    symbol: {
+                      type: 'string',
+                    },
+                    quantity: {
+                      type: 'number',
+                    },
+                  },
+                  example: {
+                    symbol: 'XPBR31',
+                    quantity: 10,
+                  },
+                },
+              },
+            },
+          },
+
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            400: {
+              description: 'Bad Request',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            422: {
+              description: 'Unprocessable Entity',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
+
     },
   },
   apis: ['./src/routes/index.js'],
