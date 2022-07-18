@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.use('/users', userRouter);
 router.use('/conta', ensureAuthenticated, accountRouter);
-router.use('/investimentos', ensureAuthenticated, investmentRouter);
+router.use('/investimentos', investmentRouter);
 
 export default router;
