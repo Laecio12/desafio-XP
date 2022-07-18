@@ -41,7 +41,7 @@ CREATE TABLE
   ) ENGINE = INNODB;
 
 CREATE TABLE
-  wallets (
+  transactions (
 	id VARCHAR(36) NOT NULL,
 	user_id VARCHAR(36) NOT NULL,
     investment_symbol VARCHAR(7) NOT NULL,

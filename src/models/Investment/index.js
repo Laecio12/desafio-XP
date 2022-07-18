@@ -6,7 +6,7 @@ const purchase = async (id, accountNumber, userId, symbol, quantity, total, aver
   try {
     transaction.beginTransaction();
     await transaction.query('UPDATE accounts SET balance = balance - ? WHERE account_number = ?', [total, accountNumber]);
-    await transaction.query('INSERT INTO wallets (id, user_id, investment_symbol, quantity, average_price) VALUES (?, ?, ?, ?, ?)', [id, userId, symbol, quantity, averagePrice]);
+    await transaction.query('INSERT INTO transactions (id, user_id, investment_symbol, quantity, average_price) VALUES (?, ?, ?, ?, ?)', [id, userId, symbol, quantity, averagePrice]);
     await transaction.commit();
   } catch (error) {
     await transaction.rollback();
@@ -21,7 +21,7 @@ const InvestmentAdd = async (id, accountNumber, quantity, total, averagePrice) =
   try {
     transaction.beginTransaction();
     await transaction.query('UPDATE accounts SET balance = balance - ? WHERE account_number = ?', [total, accountNumber]);
-    await transaction.query('UPDATE wallets SET quantity = quantity + ?, average_price = ? WHERE id = ?', [quantity, averagePrice, id]);
+    await transaction.query('UPDATE transactions SET quantity = quantity + ?, average_price = ? WHERE id = ?', [quantity, averagePrice, id]);
     await transaction.commit();
   } catch (error) {
     await transaction.rollback();
@@ -42,7 +42,7 @@ const getBySymbol = async (symbol) => {
 
 const getInvestmentBySymbolByUser = async (userId, symbol) => {
   try {
-    const [investment] = await connection.execute('SELECT * FROM wallets WHERE user_id = ? AND investment_symbol = ?', [userId, symbol]);
+    const [investment] = await connection.execute('SELECT * FROM transactions WHERE user_id = ? AND investment_symbol = ?', [userId, symbol]);
     return investment;
   } catch (error) {
     throw new AppError(error.message, 500);
