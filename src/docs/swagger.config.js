@@ -73,7 +73,7 @@ const swaggerConfig = {
       '/users/ativos': {
         get: {
           tags: ['Users'],
-          summary: 'Ativos da pessoa usuária',
+          summary: 'Buscar todos os ativos da pessoa usuária',
           description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
           security: [
             { bearerAuth: [] },
@@ -95,7 +95,7 @@ const swaggerConfig = {
       '/users/ativos/{CodAtivo}': {
         get: {
           tags: ['Users'],
-          summary: 'Ativos da pessoa usuária',
+          summary: 'Buscar um ativo específico',
           description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
           security: [
             { bearerAuth: [] },
