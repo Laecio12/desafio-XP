@@ -25,6 +25,7 @@ const swaggerConfig = {
         description: 'Local server',
       },
     ],
+
     paths: {
       '/users': {
         post: {
