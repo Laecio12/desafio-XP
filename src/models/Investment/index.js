@@ -6,6 +6,7 @@ const purchase = async (id, accountNumber, userId, symbol, quantity, total, aver
   try {
     transaction.beginTransaction();
     await transaction.query('UPDATE accounts SET balance = balance - ? WHERE account_number = ?', [total, accountNumber]);
+    await transaction.query('UPDATE investments SET quantity = quantity - ? WHERE symbol = ?', [quantity, symbol]);
     await transaction.query('INSERT INTO transactions (id, user_id, investment_symbol, quantity, average_price) VALUES (?, ?, ?, ?, ?)', [id, userId, symbol, quantity, averagePrice]);
     await transaction.commit();
   } catch (error) {
@@ -16,11 +17,12 @@ const purchase = async (id, accountNumber, userId, symbol, quantity, total, aver
   }
 };
 
-const InvestmentAdd = async (id, accountNumber, quantity, total, averagePrice) => {
+const InvestmentAdd = async (id, accountNumber, quantity, total, averagePrice, symbol) => {
   const transaction = await connection.getConnection();
   try {
     transaction.beginTransaction();
     await transaction.query('UPDATE accounts SET balance = balance - ? WHERE account_number = ?', [total, accountNumber]);
+    await transaction.query('UPDATE investments SET quantity = quantity - ? WHERE symbol = ?', [quantity, symbol]);
     await transaction.query('UPDATE transactions SET quantity = quantity + ?, average_price = ? WHERE id = ?', [quantity, averagePrice, id]);
     await transaction.commit();
   } catch (error) {

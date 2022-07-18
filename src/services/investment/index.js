@@ -19,7 +19,7 @@ const purchase = async (accountNumber, userId, symbol, quantity) => {
       investmentByUser.average_price * investmentByUser.quantity + total) / (
       investmentByUser.quantity + quantity);
     await investmentModel
-      .InvestmentAdd(investmentByUser.id, accountNumber, quantity, total, averagePrice);
+      .InvestmentAdd(investmentByUser.id, accountNumber, quantity, total, averagePrice, symbol);
   } else {
     await investmentModel
       .purchase(uuid(), accountNumber, userId, symbol, quantity, total, investment.price);
