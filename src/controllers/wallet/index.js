@@ -6,4 +6,12 @@ const getInvestmentsByUser = async (request, response) => {
   return response.status(200).json(investments);
 };
 
-export default { getInvestmentsByUser };
+const getInvestmentBySymbolByUser = async (request, response) => {
+  const { id } = request.user;
+  const { CodAtivo } = request.params;
+
+  const investment = await walletService.getInvestmentBySymbolByUser(id, CodAtivo);
+  return response.status(200).json(investment);
+};
+
+export default { getInvestmentsByUser, getInvestmentBySymbolByUser };
