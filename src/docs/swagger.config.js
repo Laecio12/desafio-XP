@@ -240,6 +240,23 @@ const swaggerConfig = {
         },
 
       },
+      '/investimentos/listar': {
+        get: {
+          tags: ['Investimentos'],
+          summary: 'Listar os ativos disponíveis na corretora',
+          description: 'Ativos disponíveis na corretora',
+
+          responses: {
+            200: {
+              description: 'Success',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
 
       '/investimentos/comprar': {
         post: {
