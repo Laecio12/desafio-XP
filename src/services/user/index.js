@@ -23,10 +23,26 @@ const create = async (name, cpf, password) => {
   };
 };
 
+const createSession = async (cpf, password) => {
+  const [user] = await UserModel.findByCpf(cpf);
+  if (!user) throw new AppError('Usuário ou senha inválidos!', 401);
+
+  const passwordMatch = await bcrypt.compare(password, user.password);
+
+  if (!passwordMatch) {
+    throw new AppError('Usuário ou senha inválidos!', 401);
+  }
+
+  const token = await generateJWT({ id: user.id });
+  return {
+    token,
+  };
+};
+
 const getUserById = async (id) => {
   const [user] = await UserModel.findById(id);
   if (!user) throw new AppError('Usuário não existe', 404);
   return user;
 };
 
-export default { create, getUserById };
+export default { create, getUserById, createSession };
