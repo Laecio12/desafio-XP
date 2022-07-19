@@ -6,4 +6,10 @@ const create = async (request, response) => {
   response.status(201).json(user);
 };
 
-export default { create };
+const createSession = async (request, response) => {
+  const { cpf, password } = request.body;
+  const token = await userService.createSession(cpf, password);
+  response.status(200).json(token);
+};
+
+export default { create, createSession };
