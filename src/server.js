@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json());
 const swaggerDoc = swaggerJsdoc(swaggerConfig);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use('/', (_request, response) => response.redirect('/docs'));
 app.use(routes);
 
 app.use((err, _request, response, next) => {
