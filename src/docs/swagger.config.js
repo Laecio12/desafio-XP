@@ -74,6 +74,46 @@ const swaggerConfig = {
         },
 
       },
+      '/users/session': {
+        post: {
+          tags: ['Users'],
+          summary: 'Fazer login',
+          description: 'Faz login da pessoa',
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    cpf: {
+                      type: 'string',
+                    },
+                    password: {
+                      type: 'string',
+                    },
+                  },
+                  example: {
+                    cpf: '00000000000',
+                    password: '123456',
+                  },
+                },
+              },
+            },
+          },
+          responses: {
+            200: {
+              description: 'Logged in',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+
+      },
 
       '/users/ativos': {
         get: {
