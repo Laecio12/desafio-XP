@@ -29,9 +29,8 @@ const swaggerConfig = {
     paths: {
       '/users': {
         post: {
-          tags: ['Users'],
-          summary: 'Criar um usuário',
-          description: 'Cria um novo usuário',
+          tags: ['Usuários'],
+          summary: 'Criar uma pessoa usuária',
           requestBody: {
             content: {
               'application/json': {
@@ -76,7 +75,7 @@ const swaggerConfig = {
       },
       '/users/session': {
         post: {
-          tags: ['Users'],
+          tags: ['Usuários'],
           summary: 'Fazer login',
           description: 'Faz login da pessoa',
           requestBody: {
@@ -102,7 +101,7 @@ const swaggerConfig = {
           },
           responses: {
             200: {
-              description: 'Logged in',
+              description: 'Success',
             },
             401: {
               description: 'Unauthorized',
@@ -117,9 +116,9 @@ const swaggerConfig = {
 
       '/users/ativos': {
         get: {
-          tags: ['Users'],
+          tags: ['Usuários'],
           summary: 'Buscar todos os ativos da pessoa usuária',
-          description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
           security: [
             { bearerAuth: [] },
           ],
@@ -139,9 +138,9 @@ const swaggerConfig = {
       },
       '/users/ativos/{CodAtivo}': {
         get: {
-          tags: ['Users'],
+          tags: ['Usuários'],
           summary: 'Buscar um ativo específico',
-          description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
           security: [
             { bearerAuth: [] },
           ],
@@ -174,7 +173,7 @@ const swaggerConfig = {
         get: {
           tags: ['Conta'],
           summary: 'Pegar saldo da conta',
-          description: 'Para pegar o saldo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          description: 'Para pegar o saldo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
           security: [
             { bearerAuth: [] },
           ],
@@ -197,7 +196,7 @@ const swaggerConfig = {
         post: {
           tags: ['Conta'],
           summary: 'Fazer um depósito na conta',
-          description: 'Para fazer o depósito clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          description: 'Para fazer o depósito clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
           security: [
             { bearerAuth: [] },
           ],
@@ -243,7 +242,7 @@ const swaggerConfig = {
         post: {
           tags: ['Conta'],
           summary: 'Fazer um saque',
-          description: 'Para fazer o saque clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          description: 'Para fazer o saque clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
           security: [
             { bearerAuth: [] },
           ],
@@ -307,7 +306,7 @@ const swaggerConfig = {
         post: {
           tags: ['Investimentos'],
           summary: 'Comprar um ativo',
-          description: 'Para comprar um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          description: 'Para comprar um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
           security: [
             { bearerAuth: [] },
           ],
@@ -357,7 +356,7 @@ const swaggerConfig = {
         post: {
           tags: ['Investimentos'],
           summary: 'Vender um ativo',
-          description: 'Para vender um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiZGRkYWU0ZDktZTcxZC00Y2ZkLWIxMjEtYzU2NjYzYzQ1NjNjIn0sImlhdCI6MTY1ODA4MTc5OCwiZXhwIjoxNjY2NzIxNzk4fQ.0A8sRTTyMAlybMzFGf4rhUogUH66Z2p_2YAftuQEHZg',
+          description: 'Para vender um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
           security: [
             { bearerAuth: [] },
           ],
