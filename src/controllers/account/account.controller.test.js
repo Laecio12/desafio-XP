@@ -4,10 +4,6 @@ import { expect } from 'chai';
 import accountService from '../../services/account/index.js';
 import accountController from './index.js';
 
-const returnUser = {
-  account: '587396-0',
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI2ODU4MiwiZXhwIjoxNjU4NDQxMzgyfQ.w8LX2wQuEnqaEY6uS6UnOjmUcMeMQABkNkDmmrP42bM"
-};
 
 describe('Testing the account controller layer', () => {
 
