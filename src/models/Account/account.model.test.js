@@ -3,7 +3,6 @@ import { expect } from 'chai';
 import connection from '../connection.js';
 import AccountModel from './index.js';
 
-import AppError from '../../errors/AppError.js';
 import generateNumberAccount from '../../utils/generateNumberAccount.js';
 
 const userBalance = [
