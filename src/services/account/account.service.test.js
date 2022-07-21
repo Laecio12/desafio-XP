@@ -18,7 +18,8 @@ const user = {
 
 const userBalance = [
   {
-    balance: 1000,
+    CodCliente: user.id,
+    Saldo: 1000,
   },
 ];
 
@@ -54,7 +55,9 @@ describe('Testing the account service layer', () => {
 
     it('Should return a balance', async () => {
       const result = await accountService.getBalance(user.account);
-      expect(result).to.be.equal(formattedToBRL(userBalance[0].balance));
+      console.log(result);
+      expect(result.CodCliente).to.be.equal(user.id);
+      expect(result.Saldo).to.be.equal(formattedToBRL(userBalance[0].Saldo),);
     });
 
   });

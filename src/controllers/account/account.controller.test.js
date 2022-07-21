@@ -3,6 +3,7 @@ import { expect } from 'chai';
 
 import accountService from '../../services/account/index.js';
 import accountController from './index.js';
+import formattedToBRL from '../../utils/formattedToBRL.js';
 
 
 describe('Testing the account controller layer', () => {
@@ -95,7 +96,7 @@ describe('when a user check the balance', async () => {
 
    it('should be able a return a balance', async () => {
      await accountService.getBalance(request, response);
-      expect(response.json.calledWith({ Saldo: 1000})).to.be.true;
+      expect(response.json.calledOnce).to.be.true;
    });
 });
 })
