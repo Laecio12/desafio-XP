@@ -37,20 +37,20 @@ const swaggerConfig = {
                 schema: {
                   type: 'object',
                   properties: {
-                    name: {
+                    Nome: {
                       type: 'string',
                     },
-                    cpf: {
+                    CPF: {
                       type: 'string',
                     },
-                    password: {
+                    Senha: {
                       type: 'string',
                     },
                   },
                   example: {
-                    name: 'laecio silva',
-                    cpf: '00000000000',
-                    password: '123456',
+                    Nome: 'laecio silva',
+                    CPF: '00000000000',
+                    Senha: '123456',
                   },
                 },
               },
@@ -84,16 +84,16 @@ const swaggerConfig = {
                 schema: {
                   type: 'object',
                   properties: {
-                    cpf: {
+                    CPF: {
                       type: 'string',
                     },
-                    password: {
+                    Senha: {
                       type: 'string',
                     },
                   },
                   example: {
-                    cpf: '00000000000',
-                    password: '123456',
+                    CPF: '00000000000',
+                    Senha: '123456',
                   },
                 },
               },
@@ -153,6 +153,8 @@ const swaggerConfig = {
               schema: {
                 type: 'string',
               },
+              example: 'XPBR31',
+
             },
           ],
           responses: {
@@ -206,12 +208,12 @@ const swaggerConfig = {
                 schema: {
                   type: 'object',
                   properties: {
-                    value: {
+                    Valor: {
                       type: 'number',
                     },
                   },
                   example: {
-                    value: 100,
+                    Valor: 1000,
                   },
                 },
               },
@@ -252,12 +254,12 @@ const swaggerConfig = {
                 schema: {
                   type: 'object',
                   properties: {
-                    value: {
+                    Valor: {
                       type: 'number',
                     },
                   },
                   example: {
-                    value: 100,
+                    Valor: 100,
                   },
                 },
               },
