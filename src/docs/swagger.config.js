@@ -27,10 +27,10 @@ const swaggerConfig = {
     ],
 
     paths: {
-      '/users': {
+      '/clientes': {
         post: {
-          tags: ['Usuários'],
-          summary: 'Criar uma pessoa usuária',
+          tags: ['Clientes'],
+          summary: 'Criar uma pessoa cliente',
           requestBody: {
             content: {
               'application/json': {
@@ -73,9 +73,9 @@ const swaggerConfig = {
         },
 
       },
-      '/users/session': {
+      '/clientes/login': {
         post: {
-          tags: ['Usuários'],
+          tags: ['Clientes'],
           summary: 'Fazer login',
           description: 'Faz login da pessoa',
           requestBody: {
@@ -114,10 +114,10 @@ const swaggerConfig = {
 
       },
 
-      '/users/ativos': {
+      '/clientes/ativos': {
         get: {
-          tags: ['Usuários'],
-          summary: 'Buscar todos os ativos da pessoa usuária',
+          tags: ['Clientes'],
+          summary: 'Buscar todos os ativos da pessoa cliente',
           description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
           security: [
             { bearerAuth: [] },
@@ -136,9 +136,9 @@ const swaggerConfig = {
         },
 
       },
-      '/users/ativos/{CodAtivo}': {
+      '/clientes/ativos/{CodAtivo}': {
         get: {
-          tags: ['Usuários'],
+          tags: ['Clientes'],
           summary: 'Buscar um ativo específico',
           description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
           security: [

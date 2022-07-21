@@ -8,7 +8,7 @@ import validateSessionData from '../middlewares/user/validateSessionData.js';
 const userRouter = express.Router();
 
 userRouter.post('/', validate, userController.create);
-userRouter.post('/session', validateSessionData, userController.createSession);
+userRouter.post('/login', validateSessionData, userController.createSession);
 userRouter.get('/ativos', ensureAuthenticated, walletController.getInvestmentsByUser);
 userRouter.get('/ativos/:CodAtivo', ensureAuthenticated, walletController.getInvestmentBySymbolByUser);
 

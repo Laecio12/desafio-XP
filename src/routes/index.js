@@ -6,7 +6,7 @@ import userRouter from './user.routes.js';
 
 const router = express.Router();
 
-router.use('/users', userRouter);
+router.use('/clientes', userRouter);
 router.use('/conta', ensureAuthenticated, accountRouter);
 router.use('/investimentos', investmentRouter);
 
