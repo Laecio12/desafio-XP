@@ -18,7 +18,7 @@ const create = async (name, cpf, password) => {
   const token = await generateJWT({ id });
 
   return {
-    account,
+    Conta: account,
     token,
   };
 };
