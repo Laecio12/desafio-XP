@@ -5,7 +5,7 @@ const purchase = async (request, response) => {
   const { CodAtivo: symbol, QtdeAtivo: quantity } = request.body;
   await investmentService.purchase(account, id, symbol, quantity);
 
-  response.status(200).json({ message: 'Compra realizada com sucesso' });
+  response.status(200).json({ message: 'Compra realizada com sucesso!' });
 };
 
 const sell = async (request, response) => {
