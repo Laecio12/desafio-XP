@@ -20,7 +20,7 @@ const getBalance = async (request, response) => {
   const { account } = request.user;
   const Saldo = await accountService.getBalance(account);
 
-  response.status(200).json({ Saldo });
+  response.status(200).json(Saldo);
 };
 
 export default { deposit, withdraw, getBalance };

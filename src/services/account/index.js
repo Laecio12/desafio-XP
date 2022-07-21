@@ -7,8 +7,11 @@ const deposit = async (accountNumber, value) => {
 };
 
 const getBalance = async (accountNumber) => {
-  const [{ balance }] = await AccountModel.getBalance(accountNumber);
-  return formattedToBRL(balance);
+  const [{ Saldo, CodCliente }] = await AccountModel.getBalance(accountNumber);
+  return {
+    CodCliente,
+    Saldo: formattedToBRL(Saldo),
+  };
 };
 
 const withdraw = async (accountNumber, value) => {

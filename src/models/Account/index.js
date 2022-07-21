@@ -19,7 +19,7 @@ const withdraw = async (accountNumber, value) => {
 
 const getBalance = async (accountNumber) => {
   try {
-    const [balance] = await connection.execute('SELECT balance FROM accounts WHERE account_number = ?', [accountNumber]);
+    const [balance] = await connection.execute('SELECT balance as Saldo, user_id as CodCliente FROM accounts WHERE account_number = ?', [accountNumber]);
     return balance;
   } catch (error) {
     throw new AppError(error.message, 500);
