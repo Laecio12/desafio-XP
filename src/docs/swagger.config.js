@@ -316,16 +316,16 @@ const swaggerConfig = {
                 schema: {
                   type: 'object',
                   properties: {
-                    symbol: {
+                    CodAtivo: {
                       type: 'string',
                     },
-                    quantity: {
+                    QtdeAtivo: {
                       type: 'number',
                     },
                   },
                   example: {
-                    symbol: 'XPBR31',
-                    quantity: 100,
+                    CodAtivo: 'XPBR31',
+                    QtdeAtivo: 100,
                   },
                 },
               },
@@ -366,16 +366,16 @@ const swaggerConfig = {
                 schema: {
                   type: 'object',
                   properties: {
-                    symbol: {
+                    CodAtivo: {
                       type: 'string',
                     },
-                    quantity: {
+                    QtdeAtivo: {
                       type: 'number',
                     },
                   },
                   example: {
-                    symbol: 'XPBR31',
-                    quantity: 10,
+                    CodAtivo: 'XPBR31',
+                    QtdeAtivo: 10,
                   },
                 },
               },
