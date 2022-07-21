@@ -15,8 +15,9 @@ const getBalance = async (accountNumber) => {
 };
 
 const withdraw = async (accountNumber, value) => {
-  const [{ balance }] = await AccountModel.getBalance(accountNumber);
-  if (balance < value) throw new AppError(`Saldo insuficiente para saque de ${formattedToBRL(value)} seu saldo é ${formattedToBRL(balance)}!`);
+  const [{ Saldo }] = await AccountModel.getBalance(accountNumber);
+
+  if (Saldo < value) throw new AppError(`Saldo insuficiente para saque de ${formattedToBRL(value)} seu saldo é ${formattedToBRL(Saldo)}!`);
   await AccountModel.withdraw(accountNumber, value);
 };
 
