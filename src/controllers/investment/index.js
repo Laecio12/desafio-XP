@@ -13,7 +13,7 @@ const sell = async (request, response) => {
   const { CodAtivo: symbol, QtdeAtivo: quantity } = request.body;
   await investmentService.sell(account, id, symbol, quantity);
 
-  response.status(200).json({ message: 'Venda realizada com sucesso' });
+  response.status(200).json({ message: 'Venda realizada com sucesso!' });
 };
 
 const getall = async (request, response) => {

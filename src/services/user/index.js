@@ -41,7 +41,7 @@ const createSession = async (cpf, password) => {
 
 const getUserById = async (id) => {
   const [user] = await UserModel.findById(id);
-  if (!user) throw new AppError('Usuário não existe', 404);
+  if (!user) throw new AppError('Usuário não existe!', 404);
   return user;
 };
 

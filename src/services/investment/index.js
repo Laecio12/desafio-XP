@@ -6,13 +6,13 @@ import accountService from '../account/index.js';
 
 const purchase = async (accountNumber, userId, symbol, quantity) => {
   const [investment] = await investmentModel.getBySymbol(symbol);
-  if (!investment) throw new AppError(`O ativo ${symbol}  não está disponível`, 404);
-  if (investment.quantity < quantity) throw new AppError(`A quantidade disponível para ${symbol} é ${investment.quantity}`);
+  if (!investment) throw new AppError(`O ativo ${symbol}  não está disponível na corretora!`, 404);
+  if (investment.quantity < quantity) throw new AppError(`A quantidade disponível para ${symbol} é ${investment.quantity}!`);
 
   const balance = await accountService.getBalance(accountNumber);
   const total = quantity * investment.price;
 
-  if (balance < total) throw new AppError(`Valor da compra ${total} seu saldo é ${balance}`);
+  if (balance < total) throw new AppError(`Valor da compra ${total} seu saldo é ${balance}!`);
 
   const [investmentByUser] = await investmentModel.getInvestmentBySymbolByUser(userId, symbol);
   if (investmentByUser) {
@@ -29,8 +29,8 @@ const purchase = async (accountNumber, userId, symbol, quantity) => {
 
 const sell = async (accountNumber, userId, symbol, quantity) => {
   const [investmentByUser] = await investmentModel.getInvestmentBySymbolByUser(userId, symbol);
-  if (!investmentByUser) throw new AppError(`O ativo ${symbol} não está na sua carteira`, 404);
-  if (investmentByUser.quantity < quantity) throw new AppError(`A quantidade de ${symbol} em carteira: ${investmentByUser.quantity}`);
+  if (!investmentByUser) throw new AppError(`O ativo ${symbol} não está na sua carteira!`, 404);
+  if (investmentByUser.quantity < quantity) throw new AppError(`A quantidade de ${symbol} em carteira: ${investmentByUser.quantity}!`);
 
   await investmentModel.sell(
     investmentByUser.id,

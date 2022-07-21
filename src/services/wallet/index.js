@@ -15,7 +15,7 @@ const getInvestmentsByUser = async (userId) => {
 
 const getInvestmentBySymbolByUser = async (userId, symbol) => {
   const [investment] = await WalletModel.getInvestmentBySymbolByUser(userId, symbol);
-  if (!investment) throw new AppError('Investimento não encontrado', 404);
+  if (!investment) throw new AppError('Investimento não encontrado!', 404);
 
   return {
     ...investment,

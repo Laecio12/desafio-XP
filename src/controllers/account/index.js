@@ -5,7 +5,7 @@ const deposit = async (request, response) => {
   const { Valor: value } = request.body;
   await accountService.deposit(account, value);
 
-  response.status(200).json({ message: 'Deposito realizado com sucesso' });
+  response.status(200).json({ message: 'Deposito realizado com sucesso!' });
 };
 
 const withdraw = async (request, response) => {
@@ -13,7 +13,7 @@ const withdraw = async (request, response) => {
   const { Valor: value } = request.body;
   await accountService.withdraw(account, value);
 
-  response.status(200).json({ message: 'Saque realizado com sucesso' });
+  response.status(200).json({ message: 'Saque realizado com sucesso!' });
 };
 
 const getBalance = async (request, response) => {
