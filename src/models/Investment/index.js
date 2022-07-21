@@ -77,7 +77,7 @@ const getInvestmentBySymbolByUser = async (userId, symbol) => {
 
 const getAll = async () => {
   try {
-    const [investments] = await connection.execute('SELECT * FROM investments');
+    const [investments] = await connection.execute('SELECT symbol as CodAtivo, quantity as QtdeAtivo, price as Valor FROM investments');
     return investments;
   } catch (error) {
     throw new AppError(error.message, 500);
