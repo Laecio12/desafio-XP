@@ -5,6 +5,22 @@
 https://desafio-xp.herokuapp.com/docs
  #
 
+## Pontos Importantes
+- Optei por utilizar o Docker pois facilita a implantação e economiza recursos frente a outras opções.
+
+- Utilizei JWT (jsonwebtoken) pois é uma ótima estratégia tanto para autenticação quando para autorização. O JWT gera um token assinado onde é possível atribuir cargos para pessoas.
+- Para o banco de dados optei por utilizar o MYSQL que é um banco relacional, ou seja, que é possível fazer relações entre tabelas.
+
+- Para o deploy utilizei o Heroku onde é possível fazer o deploy de aplicações desenvolvidas com Docker.
+#
+
+## Para executar o projeto você vai precisar
+- [Docker](https://www.docker.com/)
+- [Docker-Compose](https://docs.docker.com/compose/)
+- [Node](https://nodejs.org/pt-br/)
+- [MYSQL](https://www.mysql.com/)
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/)
+#
 ## Variáveis de Ambiente
 #
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
