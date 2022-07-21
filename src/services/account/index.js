@@ -1,5 +1,6 @@
 import AppError from '../../errors/AppError.js';
 import AccountModel from '../../models/Account/index.js';
+import formattedToBRL from '../../utils/formattedToBRL.js';
 
 const deposit = async (accountNumber, value) => {
   await AccountModel.deposit(accountNumber, value);
@@ -7,7 +8,7 @@ const deposit = async (accountNumber, value) => {
 
 const getBalance = async (accountNumber) => {
   const [{ balance }] = await AccountModel.getBalance(accountNumber);
-  return balance;
+  return formattedToBRL(balance);
 };
 
 const withdraw = async (accountNumber, value) => {

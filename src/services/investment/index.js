@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import AppError from '../../errors/AppError.js';
 import investmentModel from '../../models/Investment/index.js';
+import formattedToBRL from '../../utils/formattedToBRL.js';
 import accountService from '../account/index.js';
 
 const purchase = async (accountNumber, userId, symbol, quantity) => {
@@ -47,7 +48,12 @@ const sell = async (accountNumber, userId, symbol, quantity) => {
 
 const getAll = async () => {
   const investments = await investmentModel.getAll();
-  return investments;
+  const investmentsFormatted = investments.map((investment) => ({
+    ...investment,
+    Valor: formattedToBRL(investment.Valor),
+
+  }));
+  return investmentsFormatted;
 };
 
 export default { purchase, sell, getAll };
