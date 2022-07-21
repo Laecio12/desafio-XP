@@ -12,7 +12,7 @@ const purchase = async (accountNumber, userId, symbol, quantity) => {
   const balance = await accountService.getBalance(accountNumber);
   const total = quantity * investment.price;
 
-  if (balance < total) throw new AppError(`Valor da compra ${total} seu saldo é ${balance}!`);
+  if (balance < total) throw new AppError(`Valor da compra ${formattedToBRL(total)} seu saldo é ${formattedToBRL(balance)}!`);
 
   const [investmentByUser] = await investmentModel.getInvestmentBySymbolByUser(userId, symbol);
   if (investmentByUser) {

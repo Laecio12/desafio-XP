@@ -34,7 +34,7 @@ describe('when a user make deposit', async () => {
 
    it('should be able a message "Deposito realizado com sucesso"', async () => {
      await accountService.deposit(request, response);
-      expect(response.json.calledWith({ message: 'Deposito realizado com sucesso' })).to.be.true;
+      expect(response.json.calledWith({ message: 'Deposito realizado com sucesso!' })).to.be.true;
    });
 });
 describe('when a user make withdraw', async () => {
@@ -64,7 +64,7 @@ describe('when a user make withdraw', async () => {
 
    it('should be able a message "Deposito realizado com sucesso"', async () => {
      await accountService.withdraw(request, response);
-      expect(response.json.calledWith({ message: 'Saque realizado com sucesso' })).to.be.true;
+      expect(response.json.calledWith({ message: 'Saque realizado com sucesso!' })).to.be.true;
    });
 });
 

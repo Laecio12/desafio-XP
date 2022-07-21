@@ -6,6 +6,7 @@ import accountService from './index.js';
 import AccountModel from '../../models/Account/index.js';
 import generateNumberAccount from '../../utils/generateNumberAccount.js';
 import AppError from '../../errors/AppError.js';
+import formattedToBRL from '../../utils/formattedToBRL.js';
 
 const user = {
   id: uuid(),
@@ -53,7 +54,7 @@ describe('Testing the account service layer', () => {
 
     it('Should return a balance', async () => {
       const result = await accountService.getBalance(user.account);
-      expect(result).to.be.an('number');
+      expect(result).to.be.equal(formattedToBRL(userBalance[0].balance));
     });
 
   });
@@ -78,7 +79,7 @@ describe('Testing the account service layer', () => {
       } catch (error) {
         console.log(error);
         expect(error).to.be.an.instanceOf(AppError);
-        expect(error.message).to.be.equal('Saldo insuficiente');
+        expect(error.message).to.be.equal(`Saldo insuficiente para saque de ${formattedToBRL(10000)} seu saldo é ${formattedToBRL(1000)}!`);
       }
     });
 

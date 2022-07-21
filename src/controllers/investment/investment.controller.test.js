@@ -36,7 +36,7 @@ describe('when user purchase a investment', async () => {
 
    it('should be able a message "Compra realizada com sucesso"', async () => {
      await investmentService.purchase(request, response);
-      expect(response.json.calledWith({ message: 'Compra realizada com sucesso' })).to.be.true;
+      expect(response.json.calledWith({ message: 'Compra realizada com sucesso!' })).to.be.true;
    });
 });
 
@@ -69,7 +69,7 @@ describe('when user sell a investment', async () => {
 
    it('should be able a message "Venda realizada com sucesso"', async () => {
      await investmentService.sell(request, response);
-      expect(response.json.calledWith({ message: 'Venda realizada com sucesso' })).to.be.true;
+      expect(response.json.calledWith({ message: 'Venda realizada com sucesso!' })).to.be.true;
    });
 });
 

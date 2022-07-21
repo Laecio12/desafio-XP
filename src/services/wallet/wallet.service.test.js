@@ -103,7 +103,7 @@ describe('Testing the wallet service layer', () => {
        await walletService.getInvestmentBySymbolByUser(user.id, 'ABCD3');
       } catch (error) {
         expect(error).to.be.an.instanceOf(AppError);
-        expect(error.message).to.be.equal('Investimento não encontrado');
+        expect(error.message).to.be.equal('Investimento não encontrado!');
       }
     });
 

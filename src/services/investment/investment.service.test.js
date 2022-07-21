@@ -7,6 +7,7 @@ import InvestmentModel from '../../models/Investment/index.js';
 import generateNumberAccount from '../../utils/generateNumberAccount.js';
 import accountService from '../../services/account/index.js';
 import AppError from '../../errors/AppError.js';
+import formattedToBRL from '../../utils/formattedToBRL.js';
 
 const data = {
   accountNumber: generateNumberAccount(),
@@ -18,7 +19,7 @@ const data = {
 const investment = [
   {
     symbol: 'XPBR31',
-    price: '94.31',
+    price: 94.31,
     quantity: 200,
     created_at: '2022-07-18T16:28:52.000Z',
     updated_at: '2022-07-18T16:28:52.000Z',
@@ -128,7 +129,7 @@ describe('Testing the investment service layer', () => {
         );
       } catch (error) {
         expect(error).to.be.an.instanceof(AppError);
-        expect(error.message).to.be.equal('O ativo ABCD3  não está disponível');
+        expect(error.message).to.be.equal('O ativo ABCD3  não está disponível na corretora!');
         expect(error.statusCode).to.be.equal(404);
       }
     });
@@ -164,7 +165,7 @@ describe('Testing the investment service layer', () => {
       } catch (error) {
         expect(error).to.be.an.instanceof(AppError);
         expect(error.message).to.be.equal(
-          'A quantidade disponível para XPBR31 é 200'
+          'A quantidade disponível para XPBR31 é 200!'
         );
         expect(error.statusCode).to.be.equal(400);
       }
@@ -201,7 +202,7 @@ describe('Testing the investment service layer', () => {
       } catch (error) {
         expect(error).to.be.an.instanceof(AppError);
         expect(error.message).to.be.equal(
-          'Valor da compra 9431 seu saldo é 1000'
+          `Valor da compra ${formattedToBRL(investment[0].price * 100)} seu saldo é ${formattedToBRL(1000)}!`
         );
         expect(error.statusCode).to.be.equal(400);
       }
@@ -297,7 +298,7 @@ describe('Testing the investment service layer', () => {
         );
       } catch (error) {
         expect(error.message).to.be.equal(
-          'O ativo ABCD3 não está na sua carteira'
+          'O ativo ABCD3 não está na sua carteira!'
         );
         expect(error.statusCode).to.be.equal(404);
       }
@@ -331,7 +332,7 @@ describe('Testing the investment service layer', () => {
         );
       } catch (error) {
         expect(error.message).to.be.equal(
-          'A quantidade de XPBR31 em carteira: 200'
+          'A quantidade de XPBR31 em carteira: 200!'
         );
         expect(error.statusCode).to.be.equal(400);
       }
