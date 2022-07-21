@@ -8,7 +8,7 @@ import generateNumberAccount from '../../utils/generateNumberAccount.js';
 const create = async (name, cpf, password) => {
   const [userExists] = await UserModel.findByCpf(cpf);
 
-  if (userExists) throw new AppError('Usuário já existe', 409);
+  if (userExists) throw new AppError('Usuário já existe!', 409);
 
   const hashPassword = await bcrypt.hash(password, 8);
 
