@@ -27,4 +27,4 @@ app.use((err, _request, response, next) => {
   return next();
 });
 const PORT = process.env.PORT || 3333;
-app.listen(PORT, () => console.log('Server started on port 3333'));
+app.listen(PORT, () => console.log(`Server started on port 3333 ${PORT}`));
