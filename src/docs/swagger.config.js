@@ -38,6 +38,11 @@ const swaggerConfig = {
         Ativo: {
           type: 'object',
           properties: {
+            CodCliente: {
+              type: 'string',
+              example: '3b44f566-0a52-4c03-9f65-53dfe0eef12d',
+              description: 'Código do cliente',
+            },
             CodAtivo: {
               type: 'string',
               example: 'XPBR31',
