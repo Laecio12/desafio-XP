@@ -26,6 +26,25 @@ https://desafio-xp.herokuapp.com/docs
 - [MYSQL](https://www.mysql.com/)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/)
 #
+
+## Rodando com Docker
+
+Clone o projeto
+
+```bash
+  git clone git@github.com:Laecio12/desafio-XP.git
+```
+
+Entre no diretório do projeto
+
+```bash
+  cd desafio-XP
+```
+Para abrir o projeto no VScode
+
+```bash
+  code .
+```
 ## Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
@@ -41,26 +60,13 @@ Código gerado no site: https://www.md5hashgenerator.com/
 `JWT_SECRET=` 
 #
 
-## Rodando com Docker
-
-Clone o projeto
-
-```bash
-  git clone git@github.com:Laecio12/desafio-XP.git
-```
-
-Entre no diretório do projeto
-
-```bash
-  cd desafio-XP
-```
 Execute a criação dos containers
 ```bash
 docker-compose up -d
 ```
 Entre no container 
 ```bash
-docker exec -it desafio_xp bash
+docker exec -it desafio_xp sh
 ```
 
 Instale as dependências
