@@ -18,24 +18,44 @@ const swaggerConfig = {
             },
             token: {
               type: 'string',
-              example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+              example:
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
               description: 'Token de autenticação',
             },
           },
-
         },
         Login: {
           type: 'object',
           properties: {
             token: {
               type: 'string',
-              example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+              example:
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
               description: 'Token de autenticação',
             },
           },
-
         },
         Ativo: {
+          type: 'object',
+          properties: {
+            CodAtivo: {
+              type: 'string',
+              example: 'XPBR31',
+              description: 'Código do ativo',
+            },
+            QtdeAtivo: {
+              type: 'number',
+              example: 100,
+              description: 'Quantidade do ativo',
+            },
+            Valor: {
+              type: 'string',
+              example: 'R$ 99.00',
+              description: 'Cotação do ativo',
+            },
+          },
+        },
+        AtivoCliente: {
           type: 'object',
           properties: {
             CodCliente: {
@@ -177,7 +197,6 @@ const swaggerConfig = {
                   },
                 },
               },
-
             },
             400: {
               description: 'Bad Request',
@@ -190,7 +209,6 @@ const swaggerConfig = {
             },
           },
         },
-
       },
       '/clientes/login': {
         post: {
@@ -238,17 +256,15 @@ const swaggerConfig = {
             },
           },
         },
-
       },
 
       '/clientes/ativos': {
         get: {
           tags: ['Clientes'],
           summary: 'Buscar todos os ativos da pessoa cliente',
-          description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
-          security: [
-            { bearerAuth: [] },
-          ],
+          description:
+            'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+          security: [{ bearerAuth: [] }],
           responses: {
             200: {
               description: 'Success',
@@ -257,7 +273,7 @@ const swaggerConfig = {
                   schema: {
                     type: 'array',
                     items: {
-                      $ref: '#/components/schemas/Ativo',
+                      $ref: '#/components/schemas/AtivoCliente',
                     },
                   },
                 },
@@ -271,16 +287,14 @@ const swaggerConfig = {
             },
           },
         },
-
       },
       '/clientes/ativos/{CodAtivo}': {
         get: {
           tags: ['Clientes'],
           summary: 'Buscar um ativo específico',
-          description: 'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
-          security: [
-            { bearerAuth: [] },
-          ],
+          description:
+            'Para buscar os ativos clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+          security: [{ bearerAuth: [] }],
           parameters: [
             {
               name: 'CodAtivo',
@@ -291,7 +305,6 @@ const swaggerConfig = {
                 type: 'string',
               },
               example: 'XPBR31',
-
             },
           ],
           responses: {
@@ -301,7 +314,7 @@ const swaggerConfig = {
                 'application/json': {
                   schema: {
                     type: 'object',
-                    $ref: '#/components/schemas/Ativo',
+                    $ref: '#/components/schemas/AtivoCliente',
                   },
                 },
               },
@@ -314,16 +327,14 @@ const swaggerConfig = {
             },
           },
         },
-
       },
       '/conta/saldo': {
         get: {
           tags: ['Conta'],
           summary: 'Pegar saldo da conta',
-          description: 'Para pegar o saldo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
-          security: [
-            { bearerAuth: [] },
-          ],
+          description:
+            'Para pegar o saldo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+          security: [{ bearerAuth: [] }],
 
           responses: {
             200: {
@@ -345,16 +356,14 @@ const swaggerConfig = {
             },
           },
         },
-
       },
       '/conta/deposito': {
         post: {
           tags: ['Conta'],
           summary: 'Fazer um depósito na conta',
-          description: 'Para fazer o depósito clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
-          security: [
-            { bearerAuth: [] },
-          ],
+          description:
+            'Para fazer o depósito clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+          security: [{ bearerAuth: [] }],
           requestBody: {
             content: {
               'application/json': {
@@ -399,16 +408,14 @@ const swaggerConfig = {
             },
           },
         },
-
       },
       '/conta/saque': {
         post: {
           tags: ['Conta'],
           summary: 'Fazer um saque',
-          description: 'Para fazer o saque clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
-          security: [
-            { bearerAuth: [] },
-          ],
+          description:
+            'Para fazer o saque clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+          security: [{ bearerAuth: [] }],
           requestBody: {
             content: {
               'application/json': {
@@ -453,7 +460,6 @@ const swaggerConfig = {
             },
           },
         },
-
       },
       '/investimentos/listar': {
         get: {
@@ -480,17 +486,15 @@ const swaggerConfig = {
             },
           },
         },
-
       },
 
       '/investimentos/comprar': {
         post: {
           tags: ['Investimentos'],
           summary: 'Comprar um ativo',
-          description: 'Para comprar um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
-          security: [
-            { bearerAuth: [] },
-          ],
+          description:
+            'Para comprar um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+          security: [{ bearerAuth: [] }],
           requestBody: {
             content: {
               'application/json': {
@@ -522,7 +526,6 @@ const swaggerConfig = {
                     type: 'array',
 
                     $ref: '#/components/schemas/Compra',
-
                   },
                 },
               },
@@ -541,16 +544,14 @@ const swaggerConfig = {
             },
           },
         },
-
       },
       '/investimentos/vender': {
         post: {
           tags: ['Investimentos'],
           summary: 'Vender um ativo',
-          description: 'Para vender um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
-          security: [
-            { bearerAuth: [] },
-          ],
+          description:
+            'Para vender um ativo clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+          security: [{ bearerAuth: [] }],
           requestBody: {
             content: {
               'application/json': {
@@ -582,11 +583,9 @@ const swaggerConfig = {
                     type: 'array',
 
                     $ref: '#/components/schemas/Venda',
-
                   },
                 },
               },
-
             },
             400: {
               description: 'Bad Request',
@@ -602,9 +601,7 @@ const swaggerConfig = {
             },
           },
         },
-
       },
-
     },
   },
   apis: ['./src/routes/index.js'],
