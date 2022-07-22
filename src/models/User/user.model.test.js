@@ -102,6 +102,26 @@ describe('Testing the user model layer', () => {
     });
   });
 
+  describe('when a user is updated successfully', () => {
+    beforeEach(async () => {
+      sinon.stub(connection, 'execute').resolves(true);
+      sinon.stub(UserModel, 'edit').resolves(true);
+    });
+
+    afterEach(async () => {
+      connection.execute.restore();
+      UserModel.edit.restore();
+    });
+
+    it('Should be able edit user', async () => {
+      await UserModel.edit(uuid(), 'laecio pereira', '1234568' );
+      expect(UserModel.edit.calledOnce).to.be.true;
+      expect(UserModel.edit).to.be.an('function');
+    });
+
+    
+  });
+  
   describe('Testing findUserById', () => {
     beforeEach(async () => {
       sinon.stub(connection, 'execute').resolves([userExists]);
