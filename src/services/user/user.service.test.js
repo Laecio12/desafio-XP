@@ -212,4 +212,25 @@ describe('Testing the user service layer', () => {
     });
     
   });
+
+  describe('Testing update user data', () => {
+    beforeEach(async () => {
+      sinon.stub(connection, 'execute').resolves(true);
+      sinon.stub(UserModel, 'edit').resolves(true);
+    });
+
+    afterEach(async () => {
+      connection.execute.restore();
+      UserModel.edit.restore();
+    });
+
+    it('Should be able updated user data successfully', async () => {
+      await userService.edit(userExists.id, 'laecio pereira', '1234567');
+       
+       expect(UserModel.edit).to.be.an('function');
+       expect(UserModel.edit.calledOnce).to.be.true;
+       
+    });
+    
+  });
 });
