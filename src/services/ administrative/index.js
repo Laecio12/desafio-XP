@@ -9,8 +9,14 @@ const getAllUsers = async () => {
 
 const addInvestment = async (symbol, price, quantity) => {
   const [investment] = await InvestmentModel.getBySymbol(symbol);
-  if (investment) throw new AppError(`O ativo ${symbol}  já está cadastrado!`, 404);
+  if (investment) throw new AppError(`O ativo ${symbol}  já está cadastrado!`);
   await AdministrativeModel.addInvestment(symbol, price, quantity);
 };
 
-export default { getAllUsers, addInvestment };
+const editPrice = async (symbol, price) => {
+  const [investment] = await InvestmentModel.getBySymbol(symbol);
+  if (!investment) throw new AppError(`O ativo ${symbol} não está cadastrado!`, 404);
+  await AdministrativeModel.editPrice(symbol, price);
+};
+
+export default { getAllUsers, addInvestment, editPrice };
