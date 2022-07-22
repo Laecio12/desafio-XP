@@ -37,4 +37,14 @@ const findById = async (id) => {
   }
 };
 
-export default { create, findByCpf, findById };
+const edit = async (id, name, password) => {
+  try {
+    await connection.execute('UPDATE users SET name = ?, password = ? WHERE id = ?', [name, password, id]);
+  } catch (error) {
+    throw new AppError(error.message, 500);
+  }
+};
+
+export default {
+  create, findByCpf, findById, edit,
+};
