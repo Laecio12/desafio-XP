@@ -812,7 +812,7 @@ const swaggerConfig = {
       '/admin/investimentos/editar/{CodAtivo}': {
         patch: {
           tags: ['Área Administrativa'],
-          summary: 'Atualizar preço do ativo',
+          summary: 'Atualizar a cotação do ativo',
           description:
             'Para atualizar a cotação de um ativo precisa está autenticado com uma pessoa admin! \n\n caso já tenha adicionado o token anteriormente  clique no 🔒 faça o logout e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiOTllOThkY2QtMWY0OC00YWRhLWFiODgtNDMzODFmNTVhZTI4In0sImlhdCI6MTY1ODUxMjY1MywiZXhwIjoxNjU4Njg1NDUzfQ.Ml6p81h4ZYPjeVO__EG9buKsLtgP_7ELZyTiQa2DJrk',
           security: [{ bearerAuth: [] }],
