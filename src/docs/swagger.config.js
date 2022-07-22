@@ -96,6 +96,16 @@ const swaggerConfig = {
             },
           },
         },
+        AtivoEditarValor: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+              example: 'A cotação do ativo ABCD3 foi atualizada com sucesso!',
+              description: 'Mensagem de retorno',
+            },
+          },
+        },
         AtivoCliente: {
           type: 'object',
           properties: {
@@ -779,7 +789,7 @@ const swaggerConfig = {
                   schema: {
                     type: 'array',
 
-                    $ref: '#/components/schemas/AtivoAdd',
+                    $ref: '#/components/schemas/AtivoEditarValor',
                   },
                 },
               },
@@ -792,6 +802,63 @@ const swaggerConfig = {
             },
             422: {
               description: 'Unprocessable Entity',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+      },
+      '/admin/investimentos/editar/{CodAtivo}': {
+        patch: {
+          tags: ['Área Administrativa'],
+          summary: 'Atualizar preço do ativo',
+          description:
+            'Para atualizar a cotação de um ativo precisa está autenticado com uma pessoa admin! \n\n caso já tenha adicionado o token anteriormente  clique no 🔒 faça o logout e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiOTllOThkY2QtMWY0OC00YWRhLWFiODgtNDMzODFmNTVhZTI4In0sImlhdCI6MTY1ODUxMjY1MywiZXhwIjoxNjU4Njg1NDUzfQ.Ml6p81h4ZYPjeVO__EG9buKsLtgP_7ELZyTiQa2DJrk',
+          security: [{ bearerAuth: [] }],
+          parameters: [
+            {
+              name: 'CodAtivo',
+              in: 'path',
+              description: 'Código do ativo',
+              required: true,
+              schema: {
+                type: 'string',
+              },
+              example: 'XPBR31',
+            },
+          ],
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    Valor: {
+                      type: 'number',
+                    },
+                  },
+                  example: {
+                    Valor: 100,
+                  },
+                },
+              },
+            },
+          },
+          responses: {
+            200: {
+              description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    $ref: '#/components/schemas/AtivoEditarValor',
+                  },
+                },
+              },
+            },
+            401: {
+              description: 'Unauthorized',
             },
             500: {
               description: 'Internal Server Error',
