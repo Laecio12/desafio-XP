@@ -14,4 +14,11 @@ const addInvestment = async (symbol, price, quantity) => {
   );
 };
 
-export default { getAllUsers, addInvestment };
+const editPrice = async (symbol, price) => {
+  await connection.execute(
+    'UPDATE investments SET price = ? WHERE symbol = ?',
+    [price, symbol],
+  );
+};
+
+export default { getAllUsers, addInvestment, editPrice };
