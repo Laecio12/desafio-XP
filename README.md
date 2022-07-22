@@ -8,8 +8,13 @@ https://desafio-xp.herokuapp.com/docs
 ## Pontos Importantes
 - Optei por utilizar o Docker pois facilita a implantação e economiza recursos frente a outras opções.
 
-- Utilizei JWT (jsonwebtoken) pois é uma ótima estratégia tanto para autenticação quando para autorização. O JWT gera um token assinado onde é possível atribuir cargos para pessoas.
-- Para o banco de dados optei por utilizar o MYSQL que é um banco relacional, ou seja, que é possível fazer relações entre tabelas.
+- Utilizei JWT (jsonwebtoken) pois é uma ótima estratégia tanto para autenticação quando para autorização. O JWT gera um token assinado onde é possível atribuir cargos para pessoas. Ao fazer uma requisição envia o token no header onde o sistema consegue identificar quais rotas a pessoa tem acesso.
+
+- Para o banco de dados optei por utilizar o MYSQL que é um banco relacional, ou seja, é possível fazer relações entre tabelas desse modo posso salvar dados em uma tabela e atrela esse registro a outra tabela através de uma chave estrangeira.
+
+- Durante o desenvolvimento utilizei o Eslint, dessa forma o código fica  mais padronizado e legível. Também configurei uma action no Github que verifica possíveis erros de lint ao fazer um push ou abrir uma pull request, não permitindo fazer o merge antes de corrigir os problemas apontados.
+
+- Para os testes unitários utilizei a biblioteca chai em conjunto com Mocha para executar os testes, para gerar relatórios de cobertura utilizei a biblioteca c8. Na sessão  "Para executar os testes" é possível visualizar um print onde mostra os testes executados e o relatório gerado.
 
 - Para o deploy utilizei o Heroku onde é possível fazer o deploy de aplicações desenvolvidas com Docker.
 #
@@ -22,7 +27,7 @@ https://desafio-xp.herokuapp.com/docs
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/)
 #
 ## Variáveis de Ambiente
-#
+
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
 #
 `MYSQL_HOST=localhost`\
