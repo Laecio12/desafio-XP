@@ -7,4 +7,11 @@ const getAllUsers = async () => {
   return result;
 };
 
-export default { getAllUsers };
+const addInvestment = async (symbol, price, quantity) => {
+  await connection.execute(
+    'INSERT INTO investments (symbol, price, quantity) VALUES (?, ?, ?)',
+    [symbol, price, quantity],
+  );
+};
+
+export default { getAllUsers, addInvestment };
