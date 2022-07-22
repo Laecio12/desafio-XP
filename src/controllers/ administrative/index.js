@@ -10,4 +10,11 @@ const addInvestment = async (request, response) => {
   await administrativeService.addInvestment(symbol, price, quantity);
   return response.json({ message: `O ativo ${symbol} foi adicionado com sucesso!` });
 };
-export default { getAllUsers, addInvestment };
+
+const editPrice = async (request, response) => {
+  const { CodAtivo: symbol } = request.params;
+  const { Valor: price } = request.body;
+  await administrativeService.editPrice(symbol, price);
+  return response.json({ message: `A cotação do ativo ${symbol} foi atualizada com sucesso!` });
+};
+export default { getAllUsers, addInvestment, editPrice };
