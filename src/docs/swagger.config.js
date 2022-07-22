@@ -86,6 +86,16 @@ const swaggerConfig = {
             },
           },
         },
+        AtivoAdd: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+              example: 'O ativo ABCD3 foi adicionado com sucesso!',
+              description: 'Mensagem de retorno',
+            },
+          },
+        },
         AtivoCliente: {
           type: 'object',
           properties: {
@@ -694,7 +704,7 @@ const swaggerConfig = {
       },
       '/admin/clientes': {
         get: {
-          tags: ['Area Administrativa'],
+          tags: ['Área Administrativa'],
           summary: 'Listar os clientes',
           description:
             'Para listar todos os clientes precisa está autenticado com uma pessoa admin! \n\n caso já tenha adicionado o token anteriormente  clique no 🔒 faça o logout e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiOTllOThkY2QtMWY0OC00YWRhLWFiODgtNDMzODFmNTVhZTI4In0sImlhdCI6MTY1ODUxMjY1MywiZXhwIjoxNjU4Njg1NDUzfQ.Ml6p81h4ZYPjeVO__EG9buKsLtgP_7ELZyTiQa2DJrk',
@@ -726,7 +736,71 @@ const swaggerConfig = {
           },
         },
       },
+
+      '/admin/investimentos/adicionar': {
+        post: {
+          tags: ['Área Administrativa'],
+          summary: 'Adicionar um ativo',
+          description:
+          'Para adicionar um ativo precisa está autenticado com uma pessoa admin! \n\n caso já tenha adicionado o token anteriormente  clique no 🔒 faça o logout e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiOTllOThkY2QtMWY0OC00YWRhLWFiODgtNDMzODFmNTVhZTI4In0sImlhdCI6MTY1ODUxMjY1MywiZXhwIjoxNjU4Njg1NDUzfQ.Ml6p81h4ZYPjeVO__EG9buKsLtgP_7ELZyTiQa2DJrk',
+          security: [{ bearerAuth: [] }],
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    CodAtivo: {
+                      type: 'string',
+                    },
+                    QtdeAtivo: {
+                      type: 'number',
+                    },
+                    Valor: {
+                      type: 'number',
+                    },
+
+                  },
+                  example: {
+                    CodAtivo: 'MODL11',
+                    QtdeAtivo: 100,
+                    Valor: 8.29,
+                  },
+                },
+              },
+            },
+          },
+
+          responses: {
+            200: {
+              description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+
+                    $ref: '#/components/schemas/AtivoAdd',
+                  },
+                },
+              },
+            },
+            400: {
+              description: 'Bad Request',
+            },
+            401: {
+              description: 'Unauthorized',
+            },
+            422: {
+              description: 'Unprocessable Entity',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+      },
     },
+
   },
   apis: ['./src/routes/index.js'],
 };
