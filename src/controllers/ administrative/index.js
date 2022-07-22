@@ -5,4 +5,9 @@ const getAllUsers = async (request, response) => {
   return response.json(users);
 };
 
-export default { getAllUsers };
+const addInvestment = async (request, response) => {
+  const { CodAtivo: symbol, Valor: price, QtdeAtivo: quantity } = request.body;
+  await administrativeService.addInvestment(symbol, price, quantity);
+  return response.json({ message: `O ativo ${symbol} foi adicionado com sucesso!` });
+};
+export default { getAllUsers, addInvestment };
