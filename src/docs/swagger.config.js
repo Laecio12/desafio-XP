@@ -24,6 +24,37 @@ const swaggerConfig = {
             },
           },
         },
+        Clientes: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'string',
+              example: '99e98dcd-1f48-4ada-ab88-43381f55ae28',
+              description: 'ID do cliente',
+            },
+            name: {
+              type: 'string',
+              example: 'pedro',
+              description: 'Nome do cliente',
+            },
+            cpf: {
+              type: 'string',
+              example: '12345678901',
+              description: 'CPF do cliente',
+            },
+            account: {
+              type: 'string',
+              example: '12345-6',
+              description: 'Número da conta',
+            },
+            admin: {
+              type: 'boolean',
+              example: 1,
+              description: 'pessoa administradora',
+            },
+          },
+
+        },
         Login: {
           type: 'object',
           properties: {
@@ -262,9 +293,6 @@ const swaggerConfig = {
             },
             400: {
               description: 'Bad Request',
-            },
-            409: {
-              description: 'Conflict',
             },
             500: {
               description: 'Internal Server Error',
@@ -657,6 +685,40 @@ const swaggerConfig = {
             },
             422: {
               description: 'Unprocessable Entity',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+      },
+      '/admin/clientes': {
+        get: {
+          tags: ['Area Administrativa'],
+          summary: 'Listar os clientes',
+          description:
+            'Para listar todos os clientes precisa está autenticado com uma pessoa admin! \n\n caso já tenha adicionado o token anteriormente  clique no 🔒 faça o logout e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiOTllOThkY2QtMWY0OC00YWRhLWFiODgtNDMzODFmNTVhZTI4In0sImlhdCI6MTY1ODUxMjY1MywiZXhwIjoxNjU4Njg1NDUzfQ.Ml6p81h4ZYPjeVO__EG9buKsLtgP_7ELZyTiQa2DJrk',
+          security: [{ bearerAuth: [] }],
+
+          responses: {
+            200: {
+              description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/Clientes',
+                    },
+                  },
+                },
+              },
+            },
+            400: {
+              description: 'Bad Request',
+            },
+            401: {
+              description: 'Unauthorized',
             },
             500: {
               description: 'Internal Server Error',
