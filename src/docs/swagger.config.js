@@ -135,6 +135,16 @@ const swaggerConfig = {
             },
           },
         },
+        EditarCliente: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+              example: 'Dados atualizados com sucesso!',
+              description: 'Mensagem de retorno',
+            },
+          },
+        },
       },
 
       securitySchemes: {
@@ -194,6 +204,58 @@ const swaggerConfig = {
                   schema: {
                     type: 'object',
                     $ref: '#/components/schemas/Cliente',
+                  },
+                },
+              },
+            },
+            400: {
+              description: 'Bad Request',
+            },
+            409: {
+              description: 'Conflict',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+      },
+      '/clientes/editar': {
+        put: {
+          tags: ['Clientes'],
+          summary: 'Atualizar os dados da pessoa cliente',
+          description:
+            'Para atualizar os dados clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+          security: [{ bearerAuth: [] }],
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    Nome: {
+                      type: 'string',
+                    },
+                    Senha: {
+                      type: 'string',
+                    },
+                  },
+                  example: {
+                    Nome: 'laecio pereira',
+                    Senha: '1234567',
+                  },
+                },
+              },
+            },
+          },
+          responses: {
+            201: {
+              description: 'Created',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    $ref: '#/components/schemas/EditarCliente',
                   },
                 },
               },
