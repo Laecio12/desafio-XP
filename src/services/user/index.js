@@ -45,4 +45,11 @@ const getUserById = async (id) => {
   return user;
 };
 
-export default { create, getUserById, createSession };
+const edit = async (id, name, password) => {
+  const hashPassword = await bcrypt.hash(password, 8);
+  await UserModel.edit(id, name, hashPassword);
+};
+
+export default {
+  create, getUserById, createSession, edit,
+};
