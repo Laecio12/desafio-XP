@@ -4,9 +4,114 @@ const swaggerConfig = {
     info: {
       title: 'Api desafio XP',
       version: '1.0.0',
-      description: 'API documentation',
+      description: 'Documentação da API desafio XP.',
     },
     components: {
+      schemas: {
+        Cliente: {
+          type: 'object',
+          properties: {
+            Conta: {
+              type: 'string',
+              example: '12345-6',
+              description: 'Número da conta',
+            },
+            token: {
+              type: 'string',
+              example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+              description: 'Token de autenticação',
+            },
+          },
+
+        },
+        Login: {
+          type: 'object',
+          properties: {
+            token: {
+              type: 'string',
+              example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+              description: 'Token de autenticação',
+            },
+          },
+
+        },
+        Ativo: {
+          type: 'object',
+          properties: {
+            CodAtivo: {
+              type: 'string',
+              example: 'XPBR31',
+              description: 'Código do ativo',
+            },
+            QtdeAtivo: {
+              type: 'number',
+              example: 100,
+              description: 'Quantidade do ativo',
+            },
+            Valor: {
+              type: 'string',
+              example: 'R$ 99.00',
+              description: 'Cotação do ativo',
+            },
+          },
+        },
+        Saldo: {
+          type: 'object',
+          properties: {
+            CodCliente: {
+              type: 'string',
+              example: '3b44f566-0a52-4c03-9f65-53dfe0eef12d',
+              description: 'Código do cliente',
+            },
+            Saldo: {
+              type: 'string',
+              example: 'R$ 1.000,00',
+              description: 'Saldo do cliente',
+            },
+          },
+        },
+        Deposito: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+              example: 'Depósito realizado com sucesso!',
+              description: 'Mensagem de retorno',
+            },
+          },
+        },
+        Saque: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+              example: 'Saque realizado com sucesso!',
+              description: 'Mensagem de retorno',
+            },
+          },
+        },
+        Compra: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+              example: 'Compra realizado com sucesso!',
+              description: 'Mensagem de retorno',
+            },
+          },
+        },
+        Venda: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+              example: 'Venda realizado com sucesso!',
+              description: 'Mensagem de retorno',
+            },
+          },
+        },
+      },
+
       securitySchemes: {
         bearerAuth: {
           type: 'http',
@@ -49,7 +154,7 @@ const swaggerConfig = {
                   },
                   example: {
                     Nome: 'laecio silva',
-                    CPF: '00000000000',
+                    CPF: '00000000001',
                     Senha: '123456',
                   },
                 },
@@ -59,6 +164,15 @@ const swaggerConfig = {
           responses: {
             201: {
               description: 'Created',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    $ref: '#/components/schemas/Cliente',
+                  },
+                },
+              },
+
             },
             400: {
               description: 'Bad Request',
@@ -102,6 +216,14 @@ const swaggerConfig = {
           responses: {
             200: {
               description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    $ref: '#/components/schemas/Login',
+                  },
+                },
+              },
             },
             401: {
               description: 'Unauthorized',
@@ -125,6 +247,16 @@ const swaggerConfig = {
           responses: {
             200: {
               description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/Ativo',
+                    },
+                  },
+                },
+              },
             },
             401: {
               description: 'Unauthorized',
@@ -160,6 +292,14 @@ const swaggerConfig = {
           responses: {
             200: {
               description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    $ref: '#/components/schemas/Ativo',
+                  },
+                },
+              },
             },
             401: {
               description: 'Unauthorized',
@@ -183,6 +323,14 @@ const swaggerConfig = {
           responses: {
             200: {
               description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    $ref: '#/components/schemas/Saldo',
+                  },
+                },
+              },
             },
             401: {
               description: 'Unauthorized',
@@ -223,6 +371,14 @@ const swaggerConfig = {
           responses: {
             200: {
               description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    $ref: '#/components/schemas/Deposito',
+                  },
+                },
+              },
             },
             400: {
               description: 'Bad Request',
@@ -269,6 +425,14 @@ const swaggerConfig = {
           responses: {
             200: {
               description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    $ref: '#/components/schemas/Saque',
+                  },
+                },
+              },
             },
             400: {
               description: 'Bad Request',
@@ -295,6 +459,16 @@ const swaggerConfig = {
           responses: {
             200: {
               description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+                    items: {
+                      $ref: '#/components/schemas/Ativo',
+                    },
+                  },
+                },
+              },
             },
             500: {
               description: 'Internal Server Error',
@@ -337,6 +511,16 @@ const swaggerConfig = {
           responses: {
             200: {
               description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+
+                    $ref: '#/components/schemas/Compra',
+
+                  },
+                },
+              },
             },
             400: {
               description: 'Bad Request',
@@ -387,6 +571,17 @@ const swaggerConfig = {
           responses: {
             200: {
               description: 'Success',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'array',
+
+                    $ref: '#/components/schemas/Venda',
+
+                  },
+                },
+              },
+
             },
             400: {
               description: 'Bad Request',
