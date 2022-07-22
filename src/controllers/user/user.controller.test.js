@@ -127,7 +127,6 @@ describe('Testing the user controller layer', () => {
 
     it('should return a message "Dados atualizados com sucesso!"', async () => {
       await userController.edit(request, response);
-      console.log(response.json);
       expect(response.json.calledWith({message: 'Dados atualizados com sucesso!'})).to.be.true;
     });
   });

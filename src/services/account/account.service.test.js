@@ -55,7 +55,6 @@ describe('Testing the account service layer', () => {
 
     it('Should return a balance', async () => {
       const result = await accountService.getBalance(user.account);
-      console.log(result);
       expect(result.CodCliente).to.be.equal(user.id);
       expect(result.Saldo).to.be.equal(formattedToBRL(userBalance[0].Saldo),);
     });
@@ -80,7 +79,6 @@ describe('Testing the account service layer', () => {
         await accountService.withdraw(user.account, 10000);
 
       } catch (error) {
-        console.log(error);
         expect(error).to.be.an.instanceOf(AppError);
         expect(error.message).to.be.equal(`Saldo insuficiente para saque de ${formattedToBRL(10000)} seu saldo é ${formattedToBRL(1000)}!`);
       }
