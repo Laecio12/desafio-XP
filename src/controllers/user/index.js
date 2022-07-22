@@ -12,4 +12,13 @@ const createSession = async (request, response) => {
   response.status(200).json(token);
 };
 
-export default { create, createSession };
+const edit = async (request, response) => {
+  const { id } = request.user;
+  const {
+    Nome: name, Senha: password,
+  } = request.body;
+  await userService.edit(id, name, password);
+  response.status(200).json({ message: 'Dados atualizados com sucesso!' });
+};
+
+export default { create, createSession, edit };
