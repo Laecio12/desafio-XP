@@ -271,55 +271,6 @@ const swaggerConfig = {
           },
         },
       },
-      '/clientes/editar': {
-        put: {
-          tags: ['Clientes'],
-          summary: 'Atualizar os dados da pessoa cliente',
-          description:
-            'Para atualizar os dados clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
-          security: [{ bearerAuth: [] }],
-          requestBody: {
-            content: {
-              'application/json': {
-                schema: {
-                  type: 'object',
-                  properties: {
-                    Nome: {
-                      type: 'string',
-                    },
-                    Senha: {
-                      type: 'string',
-                    },
-                  },
-                  example: {
-                    Nome: 'laecio pereira',
-                    Senha: '1234567',
-                  },
-                },
-              },
-            },
-          },
-          responses: {
-            201: {
-              description: 'Created',
-              content: {
-                'application/json': {
-                  schema: {
-                    type: 'object',
-                    $ref: '#/components/schemas/EditarCliente',
-                  },
-                },
-              },
-            },
-            400: {
-              description: 'Bad Request',
-            },
-            500: {
-              description: 'Internal Server Error',
-            },
-          },
-        },
-      },
       '/clientes/login': {
         post: {
           tags: ['Clientes'],
@@ -431,6 +382,55 @@ const swaggerConfig = {
             },
             401: {
               description: 'Unauthorized',
+            },
+            500: {
+              description: 'Internal Server Error',
+            },
+          },
+        },
+      },
+      '/clientes/editar': {
+        put: {
+          tags: ['Clientes'],
+          summary: 'Atualizar os dados da pessoa cliente',
+          description:
+            'Para atualizar os dados clique no 🔓 e cole esse token: \n\n eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiM2I0NGY1NjYtMGE1Mi00YzAzLTlmNjUtNTNkZmUwZWVmMTJkIn0sImlhdCI6MTY1ODI3MTQ2MCwiZXhwIjoxNjY2OTExNDYwfQ.pUbS_i8_h2nGl8gNmuC79dm_ZlzUTdUfzgEZGsvwreY',
+          security: [{ bearerAuth: [] }],
+          requestBody: {
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    Nome: {
+                      type: 'string',
+                    },
+                    Senha: {
+                      type: 'string',
+                    },
+                  },
+                  example: {
+                    Nome: 'laecio pereira',
+                    Senha: '1234567',
+                  },
+                },
+              },
+            },
+          },
+          responses: {
+            201: {
+              description: 'Created',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    $ref: '#/components/schemas/EditarCliente',
+                  },
+                },
+              },
+            },
+            400: {
+              description: 'Bad Request',
             },
             500: {
               description: 'Internal Server Error',
@@ -789,7 +789,7 @@ const swaggerConfig = {
                   schema: {
                     type: 'array',
 
-                    $ref: '#/components/schemas/AtivoEditarValor',
+                    $ref: '#/components/schemas/AtivoAdd',
                   },
                 },
               },
@@ -859,6 +859,12 @@ const swaggerConfig = {
             },
             401: {
               description: 'Unauthorized',
+            },
+            404: {
+              description: 'Not Found',
+            },
+            422: {
+              description: 'Unprocessable Entity',
             },
             500: {
               description: 'Internal Server Error',
