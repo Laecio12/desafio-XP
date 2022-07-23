@@ -9,8 +9,13 @@ https://desafio-xp.herokuapp.com/docs
 - Optei por utilizar o Docker pois facilita a implantação e economiza recursos frente a outras opções.
 
 - Utilizei JWT (jsonwebtoken) pois é uma ótima estratégia tanto para autenticação quando para autorização. O JWT gera um token assinado onde é possível atribuir cargos para pessoas. Ao fazer uma requisição envia o token no header onde o sistema consegue identificar quais rotas a pessoa tem acesso.
+As pessoas podem ter acesso a rotas de acordo com o cargo que foram atribuídos, exemplo existe rotas que são pública  que todos podem acessar, rotas onde apenas pessoas clientes podem acessar e rotas que só podem ser acessadas por pessoas administradoras.
 
 - Para o banco de dados optei por utilizar o MYSQL que é um banco relacional, ou seja, é possível fazer relações entre tabelas desse modo posso salvar dados em uma tabela e atrela esse registro a outra tabela através de uma chave estrangeira.
+
+- Ao salvar a senha no banco de dados, utilizei o Bcrypt para criptografar a senha. O Bcrypt é um algoritmo de criptografia que utiliza o hashing para criptografar a senha dessa forma não é possível acessar a senha original trazendo mais segurança para as informações.
+
+- Na área administrativa ao listar as pessoas cadastradas aparecem apenas dados pessoais, exceto a senha, pois mesmo estando criptografada ainda é um dado sensível, por esse motivo removi a senha do retorno da API.
 
 - Durante o desenvolvimento utilizei o Eslint, dessa forma o código fica  mais padronizado e legível. Também configurei uma action no Github que verifica possíveis erros de lint ao fazer um push ou abrir uma pull request, não permitindo fazer o merge antes de corrigir os problemas apontados.
 
@@ -87,7 +92,7 @@ Inicie o servidor
   yarn run test:mocha
 ```
 #
- ![Resultado dos testes](./src/public/assets/testes.webp)
+ ![Resultado dos testes](./src/public/assets/testes.png)
  #
 ## Stack utilizada
 **Back-end:** Docker, Docker-Compose, Node, Express, JWT, MYSQL
